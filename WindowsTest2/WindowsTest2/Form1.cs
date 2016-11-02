@@ -22,7 +22,7 @@ namespace WindowsTest2
 
 
         //display
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_display_Click(object sender, EventArgs e)
         {
             //string connString = "Provider=OraOLEDB.Oracle.1;User ID=MGIS;Password=MGIS;Data Source=(DESCRIPTION = (ADDRESS_LIST= (ADDRESS = (PROTOCOL = TCP)(HOST = 172.17.10.216)(PORT = 1521))) (CONNECT_DATA = (SERVICE_NAME = MGISDB)))";
             OleDbConnection conn = new OleDbConnection(connString);
@@ -49,7 +49,7 @@ namespace WindowsTest2
         }
 
         //delete
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_delete_Click(object sender, EventArgs e)
         {
             OleDbConnection conn = new OleDbConnection(connString);
             try
@@ -76,7 +76,7 @@ namespace WindowsTest2
         }
 
         //add
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_add_Click(object sender, EventArgs e)
         {
             OleDbConnection conn = new OleDbConnection(connString);
             try
@@ -103,7 +103,7 @@ namespace WindowsTest2
         }
 
         //query
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_query_Click(object sender, EventArgs e)
         {
             OleDbConnection conn = new OleDbConnection(connString);
             try
@@ -118,6 +118,7 @@ namespace WindowsTest2
                 da.Fill(ds);
 
                 this.dataGridView2.DataSource = ds.Tables[0];
+                this.dataGridView2.Columns[0].HeaderText = "bsm";
             }
             catch (Exception ex)
             {
