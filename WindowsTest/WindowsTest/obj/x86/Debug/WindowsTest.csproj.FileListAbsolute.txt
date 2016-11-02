@@ -1,0 +1,6 @@
+G:\users\d\documents\visual studio 2010\Projects\WindowsTest\WindowsTest\bin\Debug\WindowsTest.exe
+G:\users\d\documents\visual studio 2010\Projects\WindowsTest\WindowsTest\bin\Debug\WindowsTest.pdb
+G:\users\d\documents\visual studio 2010\Projects\WindowsTest\WindowsTest\obj\x86\Debug\WindowsTest.Properties.Resources.resources
+G:\users\d\documents\visual studio 2010\Projects\WindowsTest\WindowsTest\obj\x86\Debug\WindowsTest.csproj.GenerateResource.Cache
+G:\users\d\documents\visual studio 2010\Projects\WindowsTest\WindowsTest\obj\x86\Debug\WindowsTest.exe
+G:\users\d\documents\visual studio 2010\Projects\WindowsTest\WindowsTest\obj\x86\Debug\WindowsTest.pdb

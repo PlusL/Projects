@@ -1,0 +1,4 @@
+G:\Users\D\documents\visual studio 2010\Projects\DB_Test\DB_Test\bin\Debug\DB_Test.exe
+G:\Users\D\documents\visual studio 2010\Projects\DB_Test\DB_Test\bin\Debug\DB_Test.pdb
+G:\Users\D\documents\visual studio 2010\Projects\DB_Test\DB_Test\obj\x86\Debug\DB_Test.exe
+G:\Users\D\documents\visual studio 2010\Projects\DB_Test\DB_Test\obj\x86\Debug\DB_Test.pdb
