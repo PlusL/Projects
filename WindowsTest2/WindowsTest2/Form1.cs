@@ -129,5 +129,11 @@ namespace WindowsTest2
                 conn.Close();
             }
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            FileTestForm formchild = new FileTestForm();
+            formchild.Show();
+        }
     }
 }
