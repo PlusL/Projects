@@ -1,0 +1,8 @@
+D:\代码\参考代码\DataManageBDC\DataManageBDC\obj\Debug\ResolveAssemblyReference.cache
+D:\代码\参考代码\DataManageBDC\DataManageBDC\obj\Debug\DataManageBDC.FormGT.resources
+D:\代码\参考代码\DataManageBDC\DataManageBDC\obj\Debug\DataManageBDC.Properties.Resources.resources
+D:\代码\参考代码\DataManageBDC\DataManageBDC\obj\Debug\DataManageBDC.csproj.GenerateResource.Cache
+D:\代码\参考代码\DataManageBDC\DataManageBDC\bin\Debug\DataManageBDC.exe
+D:\代码\参考代码\DataManageBDC\DataManageBDC\bin\Debug\DataManageBDC.pdb
+D:\代码\参考代码\DataManageBDC\DataManageBDC\obj\Debug\DataManageBDC.exe
+D:\代码\参考代码\DataManageBDC\DataManageBDC\obj\Debug\DataManageBDC.pdb

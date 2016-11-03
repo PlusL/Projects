@@ -1,0 +1,10 @@
+D:\0项目资料\1.不动产\12.不动产数据整合\DataManageBDC\DataManageBDC\obj\Debug\DataManageBDC.exe
+D:\0项目资料\1.不动产\12.不动产数据整合\DataManageBDC\DataManageBDC\obj\Debug\DataManageBDC.pdb
+G:\Users\D\documents\visual studio 2010\Projects\DataManageBDC\DataManageBDC\obj\Debug\DataManageBDC.exe
+G:\Users\D\documents\visual studio 2010\Projects\DataManageBDC\DataManageBDC\obj\Debug\DataManageBDC.pdb
+G:\Users\D\documents\visual studio 2010\Projects\DataManageBDC\DataManageBDC\bin\Debug\DataManageBDC.exe
+G:\Users\D\documents\visual studio 2010\Projects\DataManageBDC\DataManageBDC\bin\Debug\DataManageBDC.pdb
+G:\Users\D\documents\visual studio 2010\Projects\DataManageBDC\DataManageBDC\obj\Debug\DataManageBDC.FormGT.resources
+G:\Users\D\documents\visual studio 2010\Projects\DataManageBDC\DataManageBDC\obj\Debug\DataManageBDC.Properties.Resources.resources
+G:\Users\D\documents\visual studio 2010\Projects\DataManageBDC\DataManageBDC\obj\Debug\DataManageBDC.csproj.GenerateResource.Cache
+G:\Users\D\documents\visual studio 2010\Projects\DataManageBDC\DataManageBDC\bin\Debug\DataManageBDC.exe.config
