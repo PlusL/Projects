@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.FileLocationGroup = new System.Windows.Forms.GroupBox();
-            this.FileOperationGroup = new System.Windows.Forms.GroupBox();
-            this.TextArea = new System.Windows.Forms.TextBox();
-            this.FilePath = new System.Windows.Forms.TextBox();
             this.ScanButton = new System.Windows.Forms.Button();
-            this.LoadButton = new System.Windows.Forms.Button();
+            this.FilePath = new System.Windows.Forms.TextBox();
+            this.FileOperationGroup = new System.Windows.Forms.GroupBox();
             this.SaveButton = new System.Windows.Forms.Button();
+            this.LoadButton = new System.Windows.Forms.Button();
+            this.TextArea = new System.Windows.Forms.TextBox();
             this.FileLocationGroup.SuspendLayout();
             this.FileOperationGroup.SuspendLayout();
             this.SuspendLayout();
@@ -50,6 +50,23 @@
             this.FileLocationGroup.TabStop = false;
             this.FileLocationGroup.Text = "File Location";
             // 
+            // ScanButton
+            // 
+            this.ScanButton.Location = new System.Drawing.Point(82, 57);
+            this.ScanButton.Name = "ScanButton";
+            this.ScanButton.Size = new System.Drawing.Size(75, 23);
+            this.ScanButton.TabIndex = 1;
+            this.ScanButton.Text = "scan";
+            this.ScanButton.UseVisualStyleBackColor = true;
+            this.ScanButton.Click += new System.EventHandler(this.ScanButton_Click);
+            // 
+            // FilePath
+            // 
+            this.FilePath.Location = new System.Drawing.Point(6, 20);
+            this.FilePath.Name = "FilePath";
+            this.FilePath.Size = new System.Drawing.Size(232, 21);
+            this.FilePath.TabIndex = 0;
+            // 
             // FileOperationGroup
             // 
             this.FileOperationGroup.Controls.Add(this.SaveButton);
@@ -61,30 +78,15 @@
             this.FileOperationGroup.TabStop = false;
             this.FileOperationGroup.Text = "FIle operation";
             // 
-            // TextArea
+            // SaveButton
             // 
-            this.TextArea.Location = new System.Drawing.Point(21, 32);
-            this.TextArea.Multiline = true;
-            this.TextArea.Name = "TextArea";
-            this.TextArea.Size = new System.Drawing.Size(566, 273);
-            this.TextArea.TabIndex = 2;
-            // 
-            // FilePath
-            // 
-            this.FilePath.Location = new System.Drawing.Point(6, 27);
-            this.FilePath.Name = "FilePath";
-            this.FilePath.Size = new System.Drawing.Size(232, 21);
-            this.FilePath.TabIndex = 0;
-            // 
-            // ScanButton
-            // 
-            this.ScanButton.Location = new System.Drawing.Point(82, 57);
-            this.ScanButton.Name = "ScanButton";
-            this.ScanButton.Size = new System.Drawing.Size(75, 23);
-            this.ScanButton.TabIndex = 1;
-            this.ScanButton.Text = "scan";
-            this.ScanButton.UseVisualStyleBackColor = true;
-            this.ScanButton.Click += new System.EventHandler(this.ScanButton_Click);
+            this.SaveButton.Location = new System.Drawing.Point(167, 53);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveButton.TabIndex = 1;
+            this.SaveButton.Text = "save";
+            this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // LoadButton
             // 
@@ -96,15 +98,14 @@
             this.LoadButton.UseVisualStyleBackColor = true;
             this.LoadButton.Click += new System.EventHandler(this.LoadButton_Click);
             // 
-            // SaveButton
+            // TextArea
             // 
-            this.SaveButton.Location = new System.Drawing.Point(167, 53);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(75, 23);
-            this.SaveButton.TabIndex = 1;
-            this.SaveButton.Text = "save";
-            this.SaveButton.UseVisualStyleBackColor = true;
-            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            this.TextArea.Location = new System.Drawing.Point(21, 32);
+            this.TextArea.Multiline = true;
+            this.TextArea.Name = "TextArea";
+            this.TextArea.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.TextArea.Size = new System.Drawing.Size(566, 273);
+            this.TextArea.TabIndex = 2;
             // 
             // FileTestForm
             // 

@@ -90,7 +90,10 @@ namespace DataManageBDC
                 {
                     string k_val = kvp.Key;
                     ComboBox k_mc_ComboBox = kvp.Value;
-                    k_mc_ComboBox.SelectedIndex = 1; //The source code made the attribute to 0, but it crashed
+                    k_mc_ComboBox.SelectedIndex = 0; 
+                    //The source code made the attribute to 0, but it crashed
+                    //Crash fixed, but other error occured.The combobox could not show the correct text.
+                    //Crash fixed, all is well. 2016.11.04
 
                     q_fields = q_fields + k_val + ",";
                 }
@@ -172,14 +175,14 @@ namespace DataManageBDC
                     q_fields = q_fields + k_val + "=" + k_TextBox.Text + ",";
  
                 }
-/*                foreach(KeyValuePair<string,ComboBox> kvp in cmb_mc_Dictionary)
+               foreach(KeyValuePair<string,ComboBox> kvp in cmb_mc_Dictionary)
                 {
                     string k_val = kvp.Key;
                     ComboBox k_mc_ComboBox = kvp.Value;
 
-                    q_fields = q_fields + k_val + "=" + k_mc_ComboBox.Text + ",";
+                    q_fields = q_fields + k_val + "=" + "'" +k_mc_ComboBox.Text + "'" + ",";
                 }
-*/                if (q_fields.EndsWith(","))
+                if (q_fields.EndsWith(","))
                     q_fields = q_fields.Remove(q_fields.Length - 1);
 
                 string up_str = "";
@@ -197,7 +200,10 @@ namespace DataManageBDC
                     DataSet ds = new DataSet();
                     da.Fill(ds);
 
-
+                    if (Convert.ToBoolean(comm.ExecuteNonQuery()))
+                    {
+                        MessageBox.Show("update!", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -214,18 +220,160 @@ namespace DataManageBDC
             }
         }
 
+        //insert data
+        private void InsertMethod(string tb_name, Dictionary<string, TextBox> txt_Dictionary, Dictionary<string, ComboBox> cmb_mc_Dictionary, Dictionary<string, ComboBox> cmb_sz_Dictionary)
+        {
+             try
+            {
+                //insertion start
+                string q_fields = "";
+                string v_fields = "";
+                foreach (KeyValuePair<string, TextBox> kvp in txt_Dictionary)
+                {
+                    string k_val = kvp.Key;
+                    TextBox k_TextBox = kvp.Value;
+
+                    q_fields = q_fields + k_val + ",";
+                    v_fields = v_fields + " '" + k_TextBox.Text + "' " + ",";
+ 
+                }
+               foreach(KeyValuePair<string,ComboBox> kvp in cmb_mc_Dictionary)
+                {
+                    string k_val = kvp.Key;
+                    ComboBox k_mc_ComboBox = kvp.Value;
+                     
+
+                    q_fields = q_fields + k_val + ",";
+                    v_fields = v_fields + " '" + k_mc_ComboBox.Text + "' " + ",";
+                }
+                if (q_fields.EndsWith(","))
+                    q_fields = q_fields.Remove(q_fields.Length - 1);
+                if (v_fields.EndsWith(","))
+                    v_fields = v_fields.Remove(v_fields.Length - 1);
+
+                string up_str = "";
+                up_str = "insert into " + tb_name + " (" + q_fields + ") " + " values " + " (" + v_fields + ")";
+
+                //数据库操作
+                OleDbConnection conn = new OleDbConnection(connString);
+                try
+                {
+                    conn.Open();
+                    OleDbCommand comm = new OleDbCommand(up_str, conn);
+                    OleDbDataAdapter da = new OleDbDataAdapter();
+                    da.SelectCommand = comm;
+
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+
+                    if (Convert.ToBoolean(comm.ExecuteNonQuery()))
+                    MessageBox.Show("Insert!","Success",MessageBoxButtons.OK,MessageBoxIcon.None);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("SaveMethod db "+ex.Message.ToString(),"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("SaveMethod()" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        
+
+        //delete data
+        private void DeleteMethod(string tb_name, Dictionary<string, TextBox> txt_Dictionary, Dictionary<string, ComboBox> cmb_mc_Dictionary, Dictionary<string, ComboBox> cmb_sz_Dictionary)
+        {
+            try
+            {
+                //delete start
+                string q_fields = "";
+                
+                foreach (KeyValuePair<string, TextBox> kvp in txt_Dictionary)
+                {
+                    string k_val = kvp.Key;
+                    TextBox k_TextBox = kvp.Value;
+
+                    q_fields = q_fields + k_val + "=" + "'" + k_TextBox.Text + "'" + ",";
+                    break;
+
+                }
+//                foreach (KeyValuePair<string, ComboBox> kvp in cmb_mc_Dictionary)
+//               {
+//                    string k_val = kvp.Key;
+//                    ComboBox k_mc_ComboBox = kvp.Value;
+//                    
+//
+//                    q_fields = q_fields + k_val + "=" + k_mc_ComboBox.Text + ",";
+//                }
+                if (q_fields.EndsWith(","))
+                    q_fields = q_fields.Remove(q_fields.Length - 1);
+
+                string up_str = "";
+                up_str = "delete from " + tb_name + " where " + q_fields;
+
+                //数据库操作
+                OleDbConnection conn = new OleDbConnection(connString);
+                try
+                {
+                    conn.Open();
+                    OleDbCommand comm = new OleDbCommand(up_str, conn);
+                    OleDbDataAdapter da = new OleDbDataAdapter();
+                    da.SelectCommand = comm;
+
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+
+                    if (Convert.ToBoolean(comm.ExecuteNonQuery()))
+                    MessageBox.Show("Delete!","Success",MessageBoxButtons.OK,MessageBoxIcon.None);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("SaveMethod db " + ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("SaveMethod()" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //utilize the QueryMethod
         private void Button_QueryMethod_Click_1(object sender, EventArgs e)
         {
             string tb = "GTZY";
-            string clause = "BSM = 111";
-            QueryMethod(tb, clause, fz_txt_Dictionary, fz_cmb_Dictionary, fz_cmb_v_Dictionary);
+            string clause = "BSM = 1";
+            QueryMethod(tb, clause, fz_txt_Dictionary, fz_cmb_Dictionary, fz_cmb_Dictionary);
         }
 
+        //utilize the SaveMethod
         private void Button_SaveMethod_Click(object sender, EventArgs e)
         {
             string tb = "GTZY";
-            string clause = "BSM = 111";
-            SaveMethod(tb, clause, fz_txt_Dictionary, fz_cmb_Dictionary, fz_cmb_v_Dictionary);
+            string clause = "BSM = 1";
+            SaveMethod(tb, clause, fz_txt_Dictionary, fz_cmb_Dictionary, fz_cmb_Dictionary);
+        }
+
+        //utilize the InsertMethod
+        private void Button_InsertMethod_Click(object sender, EventArgs e)
+        {
+            string tb = "GTZY";
+            InsertMethod(tb, fz_txt_Dictionary,fz_cmb_Dictionary,fz_cmb_v_Dictionary);
+        }
+
+        //utilize the DeleteMethod
+        private void Button_DeleteMethod_Click(object sender, EventArgs e)
+        {
+            string tb = "GTZY";
+            DeleteMethod(tb,fz_txt_Dictionary,fz_cmb_Dictionary,fz_cmb_v_Dictionary);
         }
 
     }

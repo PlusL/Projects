@@ -6,3 +6,4 @@ G:\users\d\documents\visual studio 2010\Projects\WindowsTest2\WindowsTest2\obj\x
 G:\users\d\documents\visual studio 2010\Projects\WindowsTest2\WindowsTest2\obj\x86\Debug\WindowsTest2.exe
 G:\users\d\documents\visual studio 2010\Projects\WindowsTest2\WindowsTest2\obj\x86\Debug\WindowsTest2.pdb
 G:\Users\D\documents\visual studio 2010\Projects\WindowsTest2\WindowsTest2\obj\x86\Debug\WindowsTest2.FileTestForm.resources
+G:\users\d\documents\visual studio 2010\Projects\WindowsTest2\WindowsTest2\obj\x86\Debug\WindowsTest2.csprojResolveAssemblyReference.cache

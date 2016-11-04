@@ -8,3 +8,4 @@ G:\Users\D\documents\visual studio 2010\Projects\DataManageBDC\DataManageBDC\obj
 G:\Users\D\documents\visual studio 2010\Projects\DataManageBDC\DataManageBDC\obj\Debug\DataManageBDC.Properties.Resources.resources
 G:\Users\D\documents\visual studio 2010\Projects\DataManageBDC\DataManageBDC\obj\Debug\DataManageBDC.csproj.GenerateResource.Cache
 G:\Users\D\documents\visual studio 2010\Projects\DataManageBDC\DataManageBDC\bin\Debug\DataManageBDC.exe.config
+G:\Users\D\documents\visual studio 2010\Projects\DataManageBDC\DataManageBDC\obj\Debug\DataManageBDC.csprojResolveAssemblyReference.cache

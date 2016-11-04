@@ -33,7 +33,7 @@
             this.Button_DeleteMethod = new System.Windows.Forms.Button();
             this.Button_SaveMethod = new System.Windows.Forms.Button();
             this.Button_QueryMethod = new System.Windows.Forms.Button();
-            this.Button_LoadAllSet = new System.Windows.Forms.Button();
+            this.Button_InsertMethod = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.comboBox_FZ_FZRY_V = new System.Windows.Forms.ComboBox();
@@ -66,7 +66,7 @@
             this.tabPage1.Controls.Add(this.Button_DeleteMethod);
             this.tabPage1.Controls.Add(this.Button_SaveMethod);
             this.tabPage1.Controls.Add(this.Button_QueryMethod);
-            this.tabPage1.Controls.Add(this.Button_LoadAllSet);
+            this.tabPage1.Controls.Add(this.Button_InsertMethod);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.dateTimePicker1);
             this.tabPage1.Controls.Add(this.comboBox_FZ_FZRY_V);
@@ -94,6 +94,7 @@
             this.Button_DeleteMethod.TabIndex = 14;
             this.Button_DeleteMethod.Text = "删除";
             this.Button_DeleteMethod.UseVisualStyleBackColor = true;
+            this.Button_DeleteMethod.Click += new System.EventHandler(this.Button_DeleteMethod_Click);
             // 
             // Button_SaveMethod
             // 
@@ -115,14 +116,15 @@
             this.Button_QueryMethod.UseVisualStyleBackColor = true;
             this.Button_QueryMethod.Click += new System.EventHandler(this.Button_QueryMethod_Click_1);
             // 
-            // Button_LoadAllSet
+            // Button_InsertMethod
             // 
-            this.Button_LoadAllSet.Location = new System.Drawing.Point(409, 30);
-            this.Button_LoadAllSet.Name = "Button_LoadAllSet";
-            this.Button_LoadAllSet.Size = new System.Drawing.Size(75, 23);
-            this.Button_LoadAllSet.TabIndex = 11;
-            this.Button_LoadAllSet.Text = "添加";
-            this.Button_LoadAllSet.UseVisualStyleBackColor = true;
+            this.Button_InsertMethod.Location = new System.Drawing.Point(409, 30);
+            this.Button_InsertMethod.Name = "Button_InsertMethod";
+            this.Button_InsertMethod.Size = new System.Drawing.Size(75, 23);
+            this.Button_InsertMethod.TabIndex = 11;
+            this.Button_InsertMethod.Text = "添加";
+            this.Button_InsertMethod.UseVisualStyleBackColor = true;
+            this.Button_InsertMethod.Click += new System.EventHandler(this.Button_InsertMethod_Click);
             // 
             // label5
             // 
@@ -258,7 +260,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button Button_SaveMethod;
         private System.Windows.Forms.Button Button_QueryMethod;
-        private System.Windows.Forms.Button Button_LoadAllSet;
+        private System.Windows.Forms.Button Button_InsertMethod;
         private System.Windows.Forms.Button Button_DeleteMethod;
     }
 }

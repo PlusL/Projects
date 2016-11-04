@@ -35,11 +35,20 @@ namespace WindowsTest2
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            string Path = this.FilePath.Text;
-            StreamWriter sw = new StreamWriter(Path);
+            SaveFileDialog sfd = new SaveFileDialog();
+
+            sfd.Filter = "txt files (*.txt)|*.txt|All Files (*.*)|*.*";
+            sfd.FilterIndex = 2;
+            sfd.RestoreDirectory = true;
+
+            if(sfd.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+            {
+            StreamWriter sw = new StreamWriter(sfd.FileName);
             sw.Write(this.TextArea.Text);
             sw.Dispose();
             this.TextArea.Clear();
+            }
+
         }
     }
 }

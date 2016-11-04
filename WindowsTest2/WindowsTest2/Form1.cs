@@ -29,7 +29,7 @@ namespace WindowsTest2
             try
             {
                 conn.Open();
-                OleDbCommand comm = new OleDbCommand("select * from WFDK_GZQK", conn);
+                OleDbCommand comm = new OleDbCommand("select * from GTZY where FZRY between 'qian' and 'zhao' order by FZRY", conn);
                 OleDbDataAdapter da = new OleDbDataAdapter();
                 da.SelectCommand = comm;
 
