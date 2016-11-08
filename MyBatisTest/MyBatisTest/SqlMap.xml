@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<sqlMap namespace="Products" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<sqlMap namespace="MybatisTest" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <alias>
-    <typeAlias alias="Products" type="FeihonSamples.Products,FeihonSamples"></typeAlias>
+    <typeAlias alias="Products" type="MyBatisTest.Products,MyBatisTest"></typeAlias>
   </alias>
   <resultMaps>
     <resultMap id="SelectAllResult" class="Products">
@@ -25,6 +25,7 @@
       select * from products
       ]]>
     </select>
+    
     <select id="SelectByProductId" parameterClass="int" resultMap="SelectAllResult" extends="SelectAllProducts">
       <![CDATA[
       where productid=#value#

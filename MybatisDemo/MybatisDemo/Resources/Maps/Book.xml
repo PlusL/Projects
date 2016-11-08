@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Book" xmlns="http://ibatis.apache.org/mapping"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+
+  <!--alias节点用于为类指定一个别名，通常用于为一些很长的类名指定一个别名，这样可以减少一些代码。-->
+  <!--别名缩短配置类的作用，还有其他作用,它还指明了IBatis.net应该到哪个程序集去找实体类。-->
+  <alias>
+    <typeAlias alias="Book" type="MybatisDemo.Domain.Books.Book,MybatisDemo" />
+  </alias>
+
+  <resultMaps>
+    <resultMap id="BookResult" class="Book">
+      <result property="Isbn" column="ISBN" />
+      <result property="Title" column="TITLE" />
+      <result property="SaleDate" column="SALE_DATE" />
+      <result property="Price" column="PRICE" />
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+    <!-- INSERT  -->
+    <insert id="InsertBook" parameterClass="Book">
+      insert into BOOK
+      (ISBN,TITLE,SALE_DATE,PRICE)
+      values
+      (#Isbn#, #Title#, #SaleDate#,#Price#)
+    </insert>
+
+
+    <!-- UPDATE -->
+    <update id="UpdateBook" parameterClass="Book">
+      update BOOK
+      set TITLE = #Title#,
+      SALE_DATE = #SaleDate#,
+      PRICE = #Price#
+      where ISBN = #Isbn#
+    </update>
+
+    <!-- DELETE语句：参数是基本类型（INT）-->
+    <delete id="DeleteBook" parameterClass="System.Int32">
+      delete from BOOK
+      where ISBN = #value#
+    </delete>
+
+
+    <!--<delete id="DeleteBook" parameterClass="Book">
+            delete from BOOK
+            where ISBN = #Isbn#
+        </delete>-->
+
+
+    <!-- SELECT-->
+    <select id="GetBookByIsbn" resultClass="Book" parameterClass="System.String">
+      select
+      ISBN as Isbn,
+      TITLE as Title,
+      SALE_DATE as SaleDate,
+      PRICE as Price
+      from BOOK
+      where ISBN = #Isbn#
+    </select>
+
+    <!--<select id="GetBookByIsbn" resultMap="BookResult" parameterClass="Book"> 
+            select
+                ISBN,
+                TITLE,
+                SALE_DATE,
+                PRICE
+            from BOOK
+            where ISBN = #Isbn#
+        </select>-->
+
+
+    <select id="GetBookList" resultMap="BookResult">
+      select
+      ISBN,
+      TITLE,
+      SALE_DATE,
+      PRICE
+      from BOOK
+    </select>
+
+    <select id="GetBookListByTitle" extends="GetBookList" resultMap="BookResult" parameterClass="System.String">
+      where TITLE LIKE '%$VALUE$%'
+      order by ISBN
+    </select>
+
+    <select id="GetBookListByPrice" extends="GetBookList" resultMap="BookResult" parameterClass="System.Collections.Hashtable">
+      <dynamic prepend="where">
+        <isEqual property="priceCompare" compareValue="以上">
+          <![CDATA[
+                    PRICE >= #price#
+                ]]>
+        </isEqual>
+        <isEqual property="priceCompare" compareValue="以下">
+          <![CDATA[
+                    PRICE <= #price#
+                ]]>
+        </isEqual>
+      </dynamic>
+      order by PRICE
+    </select>
+  </statements>
+</sqlMap>

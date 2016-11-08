@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<sqlMap namespace="MybatisTest" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <alias>
+    <typeAlias alias="Products" type="MyBatisTest.Products,MyBatisTest"></typeAlias>
+  </alias>
+  <resultMaps>
+    <resultMap id="SelectAllResult" class="Products">
+      <result property="ProductId" column="ProductID" dbType="int" type="int"/>
+      <result property="ProductName" column="ProductName" dbType="varchar" type="String"/>
+      <result property="SupplierId" column="SupplierID" dbType="int" type="int"/>
+      <result property="CategoryId" column="CategoryID" dbType="int" type="int"/>
+      <result property="QuantityPerUnit" column="QuantityPerUnit" dbType="nvarchar" type="string"/>
+      <result property="UnitPrice" column="UnitPrice" dbType="money" type="double"/>
+      <result property="UnitsInStock" column="UnitsInStock" dbType="smallint" type="int"/>
+      <result property="UnitsOnOrder" column="UnitsOnOrder" dbType="smallint" type="int"/>
+      <result property="ReorderLevel" column="ReorderLevel" dbType="smallint" type="int"/>
+      <result property="Discontinued" column="Discontinued" dbType="bit" type="bool"/>
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+    <select id="SelectAllProducts" resultMap="SelectAllResult">
+      <![CDATA[
+      select * from products
+      ]]>
+    </select>
+    
+    <select id="SelectByProductId" parameterClass="int" resultMap="SelectAllResult" extends="SelectAllProducts">
+      <![CDATA[
+      where productid=#value#
+      ]]>
+    </select>
+    <select id="selectCount" resultClass="int">
+      <![CDATA[
+      select count(*) from products
+      ]]>
+    </select>
+
+    <insert id="InsertProduct" parameterClass="Products">
+      <selectKey property="ProductId" type="post" resultClass="int">
+        ${selectKey}
+      </selectKey>
+      <![CDATA[
+      insert into Products
+      (ProductName
+           ,SupplierID
+           ,CategoryID
+           ,QuantityPerUnit
+           ,UnitPrice
+           ,UnitsInStock
+           ,UnitsOnOrder
+           ,ReorderLevel
+           ,Discontinued)
+       values
+       (#ProductName#
+           ,#SupplierId#
+           ,#CategoryId#
+           ,#QuantityPerUnit#
+           ,#UnitPrice#
+           ,#UnitsInStock#
+           ,#UnitsOnOrder#
+           ,#ReorderLevel#
+           ,#Discontinued#)
+      ]]>
+
+    </insert>
+
+    <delete id="DeleteProduct" parameterClass="int">
+      <![CDATA[
+      delete from products
+      where
+      productid=#productid#
+      ]]>
+    </delete>
+
+  </statements>
+</sqlMap >
