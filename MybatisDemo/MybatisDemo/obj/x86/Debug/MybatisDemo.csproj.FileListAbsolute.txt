@@ -17,3 +17,5 @@ G:\users\d\documents\visual studio 2010\Projects\MybatisDemo\MybatisDemo\bin\Deb
 G:\users\d\documents\visual studio 2010\Projects\MybatisDemo\MybatisDemo\bin\Debug\log4net.xml
 G:\users\d\documents\visual studio 2010\Projects\MybatisDemo\MybatisDemo\obj\x86\Debug\MybatisDemo.exe
 G:\users\d\documents\visual studio 2010\Projects\MybatisDemo\MybatisDemo\obj\x86\Debug\MybatisDemo.pdb
+G:\Users\D\documents\visual studio 2010\Projects\MybatisDemo\MybatisDemo\bin\Debug\Resources\providers.config
+G:\Users\D\documents\visual studio 2010\Projects\MybatisDemo\MybatisDemo\obj\x86\Debug\MybatisDemo.Presentation.frmBookView.resources

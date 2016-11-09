@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="GTZY" xmlns="http://ibatis.apache.org/mapping"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+
+  <!--alias节点用于为类指定一个别名，通常用于为一些很长的类名指定一个别名，这样可以减少一些代码。-->
+  <!--别名缩短配置类的作用，还有其他作用,它还指明了IBatis.net应该到哪个程序集去找实体类。-->
+  <alias>
+    <typeAlias alias="GTZY" type="DataManageBDC.Domain.GTZYs.GTZY,DataManageBDC" />
+  </alias>
+
+  <resultMaps>
+    <resultMap id="GTZYResult" class="GTZY">
+      <result property="Bsm" column="BSM" />
+      <result property="Ywh" column="YWH" />
+      <result property="Ysdm" column="YSDM" />
+      <result property="Fzry" column="FZRY" />
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+    <!-- INSERT  -->
+    <insert id="InsertGTZY" parameterClass="GTZY">
+      insert into GTZY
+      (BSM,YWH,YSDM,FZRY)
+      values
+      (#Bsm#, #Ywh#, #Ysdm#,#Fzry#)
+    </insert>
+
+
+    <!-- UPDATE -->
+    <update id="UpdateGTZY" parameterClass="GTZY">
+      update GTZY
+      set YWH = #Ywh#,
+      YSDM = #Ysdm#,
+      FZRY = #Fzry#
+      where BSM = #Bsm#
+    </update>
+
+    <!-- DELETE语句：参数是基本类型（INT）-->
+    <delete id="DeleteGTZY" parameterClass="GTZY">
+      delete from GTZY
+      where BSM = #Bsm#
+    </delete>
+
+
+    <!--<delete id="DeleteBook" parameterClass="Book">
+            delete from BOOK
+            where ISBN = #Isbn#
+        </delete>-->
+
+
+    <!-- SELECT-->
+    <select id="GetGTZYByBSM" resultClass="GTZY" parameterClass="System.String">
+      select
+      BSM as Bsm,
+      YWH as Ywh,
+      YSDM as Ysdm,
+      FZRY as Fzry
+      from GTZY
+      where BSM = #Bsm#
+    </select>
+
+    <!--<select id="GetBookByIsbn" resultMap="BookResult" parameterClass="Book"> 
+            select
+                ISBN,
+                TITLE,
+                SALE_DATE,
+                PRICE
+            from BOOK
+            where ISBN = #Isbn#
+        </select>-->
+
+
+    <select id="GetGTZYList" resultMap="GTZYResult">
+      select
+      BSM,
+      YWH,
+      YSDM,
+      FZRY
+      from GTZY
+    </select>
+
+    <select id="GetGTZYListByBSM" extends="GetGTZYList" resultMap="GTZYResult" parameterClass="System.String">
+      where BSM = #Bsm#
+      
+    </select>
+
+    <!--<select id="GetGTZYListByPrice" extends="GetBookList" resultMap="BookResult" parameterClass="System.Collections.Hashtable">
+      <dynamic prepend="where">
+        <isEqual property="priceCompare" compareValue="以上">
+          <![CDATA[
+                    PRICE >= #price#
+                ]]>
+        </isEqual>
+        <isEqual property="priceCompare" compareValue="以下">
+          <![CDATA[
+                    PRICE <= #price#
+                ]]>
+        </isEqual>
+      </dynamic>
+      order by PRICE
+    </select>-->
+  </statements>
+</sqlMap>
+

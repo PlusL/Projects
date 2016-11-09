@@ -1,4 +1,4 @@
-﻿namespace DataManageBDC
+﻿namespace DataManageBDC.Presentation
 {
     partial class FormGT
     {

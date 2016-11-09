@@ -6,14 +6,28 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using System.Web;
+using IBatisNet.Common;
+using IBatisNet.DataAccess;
+using IBatisNet.DataMapper;
+using IBatisNet.DataMapper.Configuration;
+using DataManageBDC.Domain.GTZYs;
+using DataManageBDC.Domain.Exceptions;
 using System.Data.OleDb;
 
-namespace DataManageBDC
+namespace DataManageBDC.Presentation
 {
-    public partial class FormGT : Form
+    partial class FormGT : Form
     {
+       
+        
+        private DataTable _datatable = new DataTable ();
+        private DataRow _datarow = null;
+
+
         string tb_fz = "";
         Dictionary<string, TextBox> fz_txt_Dictionary = new Dictionary<string, TextBox>();
         Dictionary<string, ComboBox> fz_cmb_Dictionary = new Dictionary<string, ComboBox>();
@@ -25,6 +39,9 @@ namespace DataManageBDC
         {
             InitializeComponent();
         }
+        private static string baseDir = Path.GetFullPath(@"../../");
+        private static DomSqlMapBuilder builder = new DomSqlMapBuilder();
+        private static ISqlMapper mapper = builder.Configure(baseDir + @"Resourse\SqlMap.config");
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -65,6 +82,10 @@ namespace DataManageBDC
                 this.comboBox_FZ_FZRY.Items.Add("zhao");
                 this.comboBox_FZ_FZRY.Items.Add("li");
                 this.comboBox_FZ_FZRY.Items.Add("qian");
+                _datatable.Columns.Add("BSM");
+                _datatable.Columns.Add("YWH");
+                _datatable.Columns.Add("YSDM");
+                _datatable.Columns.Add("FZRY");
             }
             catch (Exception ex)
             {
@@ -77,7 +98,7 @@ namespace DataManageBDC
         {
             try
             {
-                //所有需要查询的字段
+/*                //所有需要查询的字段
                 string q_fields = "";
                 foreach (KeyValuePair<string, TextBox> kvp in txt_Dictionary)
                 {
@@ -128,6 +149,26 @@ namespace DataManageBDC
                 {
                     conn.Close();
                 }
+*/
+                //Mybatis select data
+                IList gtzys = mapper.QueryForList("GetGTZYListByBSM", this.textBox_FZ_BSM.Text);
+                
+                //清除数据
+
+                _datatable.Clear();
+                //设置搜索结果的数据
+                foreach (GTZY gtzy in gtzys)
+                {
+                    try
+                    {
+                        _datatable.Rows.Add(new Object[] { gtzy.Bsm, gtzy.Ywh, gtzy.Ysdm, gtzy.Fzry });
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+                _datarow = _datatable.Rows[0];
 
                 //把查到的值显示到界面上
                 foreach (KeyValuePair<string, TextBox> kvp in txt_Dictionary)
@@ -135,7 +176,7 @@ namespace DataManageBDC
                     string k_val = kvp.Key;
                     TextBox k_TextBox = kvp.Value;
 
-                    k_TextBox.Text = q_DataRow[k_val].ToString();
+                    k_TextBox.Text = _datarow[k_val].ToString();
                 }
 
                 foreach (KeyValuePair<string, ComboBox> kvp in cmb_sz_Dictionary)
@@ -143,7 +184,7 @@ namespace DataManageBDC
                     string k_val = kvp.Key;
                     ComboBox k_sz_ComboBox = kvp.Value;
                     ComboBox k_mc_ComboBox=cmb_mc_Dictionary[k_val];
-                    string q_val = q_DataRow[k_val].ToString();
+                    string q_val = _datarow[k_val].ToString();
 
                     int q_index = k_sz_ComboBox.Items.IndexOf(q_val);
                     if (q_index != -1)
@@ -165,7 +206,7 @@ namespace DataManageBDC
         {
             try
             {
-                //保存也是循环那些控件的数据字典，根据主键字段，更新到对应表中
+/*                //保存也是循环那些控件的数据字典，根据主键字段，更新到对应表中
                 string q_fields = "";
                 foreach (KeyValuePair<string, TextBox> kvp in txt_Dictionary)
                 {
@@ -213,6 +254,14 @@ namespace DataManageBDC
                 {
                     conn.Close();
                 }
+ */
+                GTZY gtzy = new GTZY();
+                gtzy.Bsm = this.textBox_FZ_BSM.Text;
+                gtzy.Ywh = this.textBox_FZ_YWH.Text;
+                gtzy.Ysdm = this.textBox_FZ_YSDM.Text;
+                gtzy.Fzry = this.comboBox_FZ_FZRY.Text;
+                mapper.Update("UpdateGTZY",gtzy);
+               
             }
             catch (Exception ex)
             {
@@ -225,7 +274,7 @@ namespace DataManageBDC
         {
              try
             {
-                //insertion start
+/*                //insertion start
                 string q_fields = "";
                 string v_fields = "";
                 foreach (KeyValuePair<string, TextBox> kvp in txt_Dictionary)
@@ -277,10 +326,17 @@ namespace DataManageBDC
                 {
                     conn.Close();
                 }
+ */
+                GTZY gtzy = new GTZY();
+                gtzy.Bsm = this.textBox_FZ_BSM.Text;
+                gtzy.Ywh = this.textBox_FZ_YWH.Text;
+                gtzy.Ysdm = this.textBox_FZ_YSDM.Text;
+                gtzy.Fzry = this.comboBox_FZ_FZRY.Text;
+                mapper.Insert("InsertGTZY", gtzy);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("SaveMethod()" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("InsertMethod()" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         
@@ -290,7 +346,7 @@ namespace DataManageBDC
         {
             try
             {
-                //delete start
+/*                //delete start
                 string q_fields = "";
                 
                 foreach (KeyValuePair<string, TextBox> kvp in txt_Dictionary)
@@ -339,10 +395,17 @@ namespace DataManageBDC
                 {
                     conn.Close();
                 }
+ */
+                GTZY gtzy = new GTZY();
+                gtzy.Bsm = this.textBox_FZ_BSM.Text;
+                gtzy.Ywh = this.textBox_FZ_YWH.Text;
+                gtzy.Ysdm = this.textBox_FZ_YSDM.Text;
+                gtzy.Fzry = this.comboBox_FZ_FZRY.Text;
+                mapper.Delete("DeleteGTZY",gtzy);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("SaveMethod()" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("DeleteMethod()" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -375,6 +438,7 @@ namespace DataManageBDC
             string tb = "GTZY";
             DeleteMethod(tb,fz_txt_Dictionary,fz_cmb_Dictionary,fz_cmb_v_Dictionary);
         }
-
+        
     }
 }
+        
