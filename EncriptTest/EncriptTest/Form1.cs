@@ -24,7 +24,7 @@ namespace EncriptTest
             InitializeComponent();
         }
 
- /*       private void Form1_Load(object sender, EventArgs e)
+/*       private void Form1_Load(object sender, EventArgs e)
         {
             try
             {
@@ -84,20 +84,28 @@ namespace EncriptTest
 
         private void Button_FilePath_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            if (ofd.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+            try
             {
-                string file = ofd.FileName;
-                this.TextBox_FilePath.Text = file;
+                OpenFileDialog ofd = new OpenFileDialog();
+                if (ofd.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+                {
+                    string file = ofd.FileName;
+                    this.TextBox_FilePath.Text = file;
+                    string Path = this.TextBox_FilePath.Text;
+                    string Encodes = File.ReadAllText(Path, Encoding.UTF8);
+                    string Decodes = DecodeBase64(Encoding.UTF8, Encodes);
+                    string[] Decodes_list = Decodes.Split(',');
+                    TextBox_SeqNum.Text = Decodes_list[0];
+                    TextBox_Proposer.Text = Decodes_list[1];
+                    TextBox_Company.Text = Decodes_list[2];
+                    TextBox_Phone.Text = Decodes_list[3];
+                }
             }
-            string Path = this.TextBox_FilePath.Text;
-            string Encodes = File.ReadAllText(Path,Encoding.UTF8);
-            string Decodes = DecodeBase64(Encoding.UTF8,Encodes);
-            string[] Decodes_list = Decodes.Split(',');
-            TextBox_SeqNum.Text = Decodes_list[0];
-            TextBox_Proposer.Text = Decodes_list[1];
-            TextBox_Company.Text = Decodes_list[2];
-            TextBox_Phone.Text = Decodes_list[3];
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
 
         private void Button_Reg_Click(object sender, EventArgs e)
