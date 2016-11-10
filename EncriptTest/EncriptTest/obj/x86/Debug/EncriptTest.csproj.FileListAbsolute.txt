@@ -1,0 +1,7 @@
+G:\users\d\documents\visual studio 2010\Projects\EncriptTest\EncriptTest\bin\Debug\EncriptTest.exe
+G:\users\d\documents\visual studio 2010\Projects\EncriptTest\EncriptTest\bin\Debug\EncriptTest.pdb
+G:\users\d\documents\visual studio 2010\Projects\EncriptTest\EncriptTest\obj\x86\Debug\EncriptTest.Form1.resources
+G:\users\d\documents\visual studio 2010\Projects\EncriptTest\EncriptTest\obj\x86\Debug\EncriptTest.Properties.Resources.resources
+G:\users\d\documents\visual studio 2010\Projects\EncriptTest\EncriptTest\obj\x86\Debug\EncriptTest.csproj.GenerateResource.Cache
+G:\users\d\documents\visual studio 2010\Projects\EncriptTest\EncriptTest\obj\x86\Debug\EncriptTest.exe
+G:\users\d\documents\visual studio 2010\Projects\EncriptTest\EncriptTest\obj\x86\Debug\EncriptTest.pdb
