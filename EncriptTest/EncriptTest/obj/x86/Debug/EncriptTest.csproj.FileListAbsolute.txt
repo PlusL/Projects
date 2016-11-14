@@ -5,3 +5,4 @@ G:\users\d\documents\visual studio 2010\Projects\EncriptTest\EncriptTest\obj\x86
 G:\users\d\documents\visual studio 2010\Projects\EncriptTest\EncriptTest\obj\x86\Debug\EncriptTest.csproj.GenerateResource.Cache
 G:\users\d\documents\visual studio 2010\Projects\EncriptTest\EncriptTest\obj\x86\Debug\EncriptTest.exe
 G:\users\d\documents\visual studio 2010\Projects\EncriptTest\EncriptTest\obj\x86\Debug\EncriptTest.pdb
+G:\users\d\documents\visual studio 2010\Projects\EncriptTest\EncriptTest\obj\x86\Debug\EncriptTest.csprojResolveAssemblyReference.cache
